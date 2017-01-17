@@ -27,7 +27,7 @@
 
 <div dir="rtl" class="center-box">
     <div class="center-box-content">
-        <span class="title">ثبت نام</span>
+        <span class="title">ورود کاربران</span>
 
         <form method="post" action="{{url('login')}}">
             {{ csrf_field() }}
