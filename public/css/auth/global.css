@@ -86,3 +86,6 @@ input[type="checkbox"] {
     margin-top: 15px;
 }
 
+#wrong-form-label {
+    color: darkred;
+}
