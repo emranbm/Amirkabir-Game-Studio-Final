@@ -8,14 +8,14 @@
     <meta name="description" content="ثبت نام در سایت">
     <meta name="author" content="1111111">
 
-    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="css/reset.css">
     <link href="https://cdn.rawgit.com/rastikerdar/shabnam-font/v1.0.2/dist/font-face.css" rel="stylesheet"
           type="text/css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="../styles/hw2-global.css">
-    <link rel="stylesheet" href="../styles/register.css">
+    <link rel="stylesheet" href="css/auth/global.css">
+    <link rel="stylesheet" href="css/auth/register.css">
 
-    <script src="../js/global.js"></script>
+    <script src="js/auth/global.js"></script>
 </head>
 
 <body>
@@ -28,13 +28,21 @@
 <div dir="rtl" class="center-box">
     <span class="title">ثبت نام</span>
 
-    <form method="post">
-        <div class="center-box-row"><i class="material-icons">person</i><input class="text-box" type="text"
-                                                                               placeholder="نام کاربری"/></div>
-        <div class="center-box-row"><i class="material-icons">email</i><input class="text-box" type="text"
-                                                                              placeholder="رایانامه"/></div>
-        <div class="center-box-row"><i class="material-icons">lock</i><input class="text-box" type="text"
-                                                                             placeholder="رمز عبور"/></div>
+    @if (!empty($errors->all()))
+        <span id="wrong-form-label">اطلاعات وارد شده صحیح نمی‌باشد.</span>
+    @endif
+
+    <form method="POST" action="{{url('register')}}">
+        {{ csrf_field() }}
+        <div class="center-box-row"><i class="material-icons">person</i>
+            <input class="text-box" type="text" name="name" value="{{ old("name") }}" placeholder="نام کاربری"/>
+        </div>
+        <div class="center-box-row"><i class="material-icons">email</i>
+            <input class="text-box" type="text" name="email" value="{{ old("email") }}" placeholder="رایانامه"/>
+        </div>
+        <div class="center-box-row"><i class="material-icons">lock</i>
+            <input class="text-box" type="text" name="password" placeholder="رمز عبور"/>
+        </div>
         <br/>
         <input type="checkbox"/><a href="#">قوانین</a> را می‌پذیرم. <br/>
         <input class="button center-horizontal" type="button" value="ثبت نام">

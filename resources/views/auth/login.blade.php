@@ -12,7 +12,7 @@
     <link href="https://cdn.rawgit.com/rastikerdar/shabnam-font/v1.0.2/dist/font-face.css" rel="stylesheet"
           type="text/css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="css/auth/hw2-global.css">
+    <link rel="stylesheet" href="css/auth/global.css">
     <link rel="stylesheet" href="css/auth/login.css">
 
     <script src="js/auth/global.js"></script>
@@ -31,9 +31,9 @@
 
         <form method="post" action="{{url('login')}}">
             {{ csrf_field() }}
-            @if ($errors->has('email'))
+            @if (!empty($errors->all()))
                 <div class="center-box-row">
-                    <span style="color: darkred">ایمیل / پسورد اشباه است.</span>
+                    <span id="wrong-form-label">ایمیل / پسورد اشباه است.</span>
                 </div>
             @endif
             <div class="center-box-row">
