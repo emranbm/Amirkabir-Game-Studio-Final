@@ -104,7 +104,7 @@
                         </a>
                     </li>
                 </ul>
-                <img src="assets/fakeicons.jpg">
+                <img src="assets/images/fake-icons.jpg">
             </div>
             <div class="col-md-3"></div>
         </div>
