@@ -1,0 +1,15 @@
+#general-comments-div .item img {
+    width: 30pt;
+    height: 30pt;
+    margin-left: -15pt;
+}
+
+#general-comments-div .item {
+    border-bottom: solid #d1d1d1 1px;
+    margin-bottom: 10pt;
+    margin-left: 25pt;
+}
+
+#general-comments-div {
+    margin-bottom: 0px;
+}

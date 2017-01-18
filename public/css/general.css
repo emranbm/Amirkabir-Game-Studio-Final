@@ -1,0 +1,62 @@
+
+.viewport {
+    height: 100vh;
+    position: relative;
+    margin-bottom: 15pt;
+}
+
+* {
+    text-align: right;
+}
+
+.glyphicon {
+    font-size: 20pt;
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6, button, span, a, .shabnam-font, div {
+    font-family: Shabnam;
+}
+
+.stick-bottom {
+    position: absolute;
+    bottom: 0px;
+}
+
+.white-text {
+    color: white;
+}
+
+.small-text {
+    font-size: 12pt;
+}
+
+.blue-text {
+    color: #2aabd2;
+}
+
+.nice-link {
+    color: #b4b5ba;
+}
+
+.nice-link:hover {
+    color: white;
+    cursor: pointer;
+    cursor: hand;
+}
+
+a:hover, a, a:active {
+    text-decoration: none;
+}
+
+.container-fluid {
+    padding: 0px;
+}
+
+.round-img {
+    border-radius: 15pt;
+}
+
+.row {
+    position: relative;
+}

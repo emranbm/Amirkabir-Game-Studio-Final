@@ -1,0 +1,125 @@
+header {
+    height: 130pt;
+    background-size: cover;
+}
+
+header h2 {
+    color: white;
+}
+
+#header-content {
+    margin-top: 20pt;
+}
+
+#raters-label:before {
+    content: '(';
+}
+
+#raters-label:after {
+    content: ' رأی)';
+}
+
+#header-img {
+    width: 90pt;
+    height: 90pt;
+    border-radius: 10pt;
+    position: absolute;
+    left: 0px;
+}
+
+.nav-tabs {
+    width: 100%;
+    border-bottom: none;
+}
+
+.nav-tabs li {
+    float: right;
+}
+
+.nav-tabs li:hover {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.tab-spacer {
+    padding-top: 60pt;
+}
+
+#info-div img {
+    max-width: 50%;
+    margin: auto;
+}
+
+#tab-title {
+    display: inline;
+    padding-right: 20pt;
+    padding-top: 0pt;
+}
+
+#tab-title-div {
+    border-bottom: solid #dedede 2pt;
+    margin-bottom: 15pt;
+    padding-top: 15pt;
+    padding-bottom: 15pt;
+}
+
+.container {
+    padding-right: 15%;
+    padding-left: 15%;
+    padding-bottom: 20pt;
+}
+
+.active-tab {
+    border-bottom: solid #337ab7 2pt;
+}
+
+#tabs-full-div {
+    background-color: #e8e8e8;
+}
+
+#comment-btn {
+    float: left;
+}
+
+.comment-row {
+    padding: 10pt;
+}
+
+.comment-row:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.comment-row img {
+    max-height: 30pt;
+    float: left;
+}
+
+.username:after {
+    content: ": ";
+}
+
+.tab-content button{
+    margin-top: 15pt;
+}
+
+.comment-stars-div{
+    margin-top: 10pt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
