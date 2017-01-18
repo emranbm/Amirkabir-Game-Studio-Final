@@ -27,10 +27,22 @@ $.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
     $('#game-genre').html(game.categories.join('، '));
     starRating.starRatingElement(Math.round(game.rate), 5, $('#rate-star-div')[0]);
 
-    if (emranHelper.getParameterByName('tab') == 'gallery')
-        galleryTabClick();
-    else
-        infoTabClick();
+    switch (emranHelper.getParameterByName('tab')) {
+        case 'leaderboard':
+            leaderTabClick();
+            break;
+        case 'comments':
+            commentsTabClick();
+            break;
+        case 'related_games':
+            relatedGamesTabClick();
+            break;
+        case 'gallery':
+            galleryTabClick();
+            break;
+        default:
+            infoTabClick();
+    }
 });
 
 function infoTabClick() {
