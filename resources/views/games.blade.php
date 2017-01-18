@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <img id="header-img" src="assets/tail-spin.svg"/>
+                    <img id="header-img" src="assets/images/tail-spin.svg"/>
                 </div>
             </div>
         </div>

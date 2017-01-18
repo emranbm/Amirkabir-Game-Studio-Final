@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="libs/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/general.css">
 
-    @yield('style');
+    @yield('style')
 
     <link rel="stylesheet" href="css/utils/star-rate.css">
     <link rel="stylesheet" href="css/game-item.css">
