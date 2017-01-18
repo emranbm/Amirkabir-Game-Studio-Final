@@ -19,6 +19,10 @@ Route::get('games', function () {
     return view('games');
 });
 
+Route::get('games_list', function () {
+    return view('games_list');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
