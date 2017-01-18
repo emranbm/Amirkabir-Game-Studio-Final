@@ -20,16 +20,16 @@
 <div class="container-fluid">
     <div id="first-viewport" class="viewport">
 
-        <a href="index.html">
+        <a href="{{ url('/') }}">
             <span dir="rtl" id="top-right-span" class="white-text">
                 <span class="glyphicon glyphicon-cloud small-text"></span>
                 <span class="small-text">امیرکبیر </span> <span class="small-text blue-text">استودیو</span>
             </span>
         </a>
 
-        <form method="get" action="register.html">
+        <form method="get" action="{{ url('register') }}">
     <span dir="rtl" id="top-left-span">
-        <a class="nice-link small-text" href="login.html">ورود</a>
+        <a class="nice-link small-text" href="{{ url('login') }}">ورود</a>
         <button type="submit" class="btn btn-primary">ثبت نام</button>
     </span>
         </form>
