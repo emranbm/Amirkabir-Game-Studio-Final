@@ -27,9 +27,19 @@
 
 <div dir="rtl" class="center-box">
     <span class="title">ثبت نام</span>
+    <?php
+    if (empty($errors->all()))
+        $msg = false;
+    else if ($errors->has('name'))
+        $msg = 'نام کاربری قابل قبول نیست.';
+    else if ($errors->has('email'))
+        $msg = 'لطفا ایمیل را به درستی وارد کنید.';
+    else if ($errors->has('password'))
+        $msg = 'پسورد نامناسب است.';
+    ?>
 
-    @if (!empty($errors->all()))
-        <span id="wrong-form-label">اطلاعات وارد شده صحیح نمی‌باشد.</span>
+    @if (isset($msg))
+        <span id="wrong-form-label">{{ $msg }}</span>
     @endif
 
     <form method="POST" action="{{url('register')}}">
@@ -41,11 +51,14 @@
             <input class="text-box" type="text" name="email" value="{{ old("email") }}" placeholder="رایانامه"/>
         </div>
         <div class="center-box-row"><i class="material-icons">lock</i>
-            <input class="text-box" type="text" name="password" placeholder="رمز عبور"/>
+            <input class="text-box" type="password" name="password" placeholder="رمز عبور"/>
+        </div>
+        <div class="center-box-row"><i class="material-icons">lock</i>
+            <input class="text-box" type="password" name="password_confirmation" placeholder="تکرار رمز عبور"/>
         </div>
         <br/>
-        <input type="checkbox"/><a href="#">قوانین</a> را می‌پذیرم. <br/>
-        <input class="button center-horizontal" type="button" value="ثبت نام">
+        <input type="checkbox" checked/><a href="#">قوانین</a> را می‌پذیرم. <br/>
+        <input class="button center-horizontal" type="submit" value="ثبت نام">
     </form>
 </div>
 
