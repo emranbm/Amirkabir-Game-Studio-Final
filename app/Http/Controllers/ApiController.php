@@ -39,6 +39,11 @@ class ApiController extends Controller
         //TODO
     }
 
+    public function home($game, Request $request)
+    {
+        //TODO
+    }
+
     /**
      * Packs the result with the standard shape of api.
      * @param $obj

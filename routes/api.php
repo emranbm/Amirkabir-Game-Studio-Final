@@ -29,3 +29,4 @@ Route::group(['prefix' => 'games'], function () {
     Route::get('{game}/leaderboard', 'ApiController@leaderboard');
     Route::get('{game}/related_games', 'ApiController@related_games');
 });
+Route::get('home', 'ApiController@home');
