@@ -18,7 +18,7 @@ class ApiController extends Controller
     public function comments($game, Request $request)
     {
         $game->comments->load('user');
-        foreach ($game->comments as $comment){
+        foreach ($game->comments as $comment) {
             $comment->game->load('categories');
         }
         return $this->packResult(['comments' => $game->comments]);
@@ -26,12 +26,14 @@ class ApiController extends Controller
 
     public function header($game, Request $request)
     {
-        //TODO
+        return $this->info($game, $request);
     }
 
     public function leaderboard($game, Request $request)
     {
-        //TODO
+        return $this->packResult($game->load(['records' => function ($query) {
+            $query->orderBy('score', 'desc')->limit(10);
+        }]));
     }
 
     public function related_games($game, Request $request)
