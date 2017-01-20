@@ -12,6 +12,8 @@ class ApiController extends Controller
     public function info($game, Request $request)
     {
         $game->load('categories');
+        $game = json_decode(json_encode($game));
+        $game->categories = $this->standardCategoryArray($game->categories);
         return $this->packResult(['game' => $game]);
     }
 
@@ -21,6 +23,12 @@ class ApiController extends Controller
         foreach ($game->comments as $comment) {
             $comment->game->load('categories');
         }
+
+        $game = json_decode(json_encode($game));
+        foreach ($game->comments as $comment) {
+            $comment->game->categories = $this->standardCategoryArray($comment->game->categories);
+        }
+
         return $this->packResult(['comments' => $game->comments]);
     }
 
@@ -31,14 +39,42 @@ class ApiController extends Controller
 
     public function leaderboard($game, Request $request)
     {
-        return $this->packResult($game->load(['records' => function ($query) {
+        $game->load(['records' => function ($query) {
             $query->orderBy('score', 'desc')->limit(10);
-        }]));
+        }]);
+
+        $game->load('categories');
+
+        $game = json_decode(json_encode($game));
+        $game->categories = $this->standardCategoryArray($game->categories);
+
+        return $this->packResult($game);
     }
 
     public function related_games($game, Request $request)
     {
-        //TODO
+        $cats = $game->categories;
+
+        if (count($cats) === 0)
+            return $this->packResult(['games' => []]);
+
+        $relatedGames = Game::with(['categories' => function ($query) {
+            global $cats;
+
+            for ($i = 0; $i < count($cats); $i++) {
+                $query = $query->where('name', $cats[$i]);
+            }
+
+            return $query;
+        }])->get();
+
+        $relatedGames = json_decode(json_encode($relatedGames));
+
+        for ($i = 0; $i < count($relatedGames); $i++) {
+            $relatedGames[$i]->categories = $this->standardCategoryArray($relatedGames[$i]->categories);
+        }
+
+        return $this->packResult(['games' => $relatedGames]);
     }
 
     public function home($game, Request $request)
@@ -57,5 +93,14 @@ class ApiController extends Controller
             'result' => $obj
         ]
         ];
+    }
+
+    private function standardCategoryArray($categories){
+        $newCats = [];
+        for ($j = 0; $j < count($categories); $j++) {
+            $newCats[] = $categories[$j]->name;
+        }
+
+        return $newCats;
     }
 }
