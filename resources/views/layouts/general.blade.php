@@ -28,8 +28,12 @@
         <div class="row col-md-6">
             <div class="row col-md-6">
                 <div class="col-md-4">
-                    <a href="{{ url('login') }}">
-                        <span id="login-label" class="text-muted">ورود</span>
+                    <a href="{{ Auth::guest() ? url('login') : url('logout') }}">
+                        @if (Auth::guest())
+                            <span id="login-label" class="text-muted">ورود</span>
+                        @else
+                            <span id="login-label" class="text-muted">خروج</span>
+                        @endif
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </div>
