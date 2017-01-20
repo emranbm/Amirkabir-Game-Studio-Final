@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
 
+    protected $hidden = ['id', 'created_at', 'updated_at'];
+
     public function comments()
     {
         return $this->hasMany('App\Comment');
