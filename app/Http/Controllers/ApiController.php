@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Game;
+use App\Tutorial;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -77,9 +78,27 @@ class ApiController extends Controller
         return $this->packResult(['games' => $relatedGames]);
     }
 
-    public function home($game, Request $request)
+    public function home(Request $request)
     {
-        //TODO
+        $slider = Game::orderBy('created_at', 'desc')->limit(10)->get();
+        $newGames = $slider;
+        $comments = Comment::orderBy('created_at', 'desc')->limit(5)->get();
+        $tutorials = Tutorial::orderBy('created_at', 'desc')->limit(5)->get()->load(['game' => function ($query) {
+            $query->with('categories');
+        }]);
+
+        $tutorials = json_decode(json_encode($tutorials));
+
+        foreach ($tutorials as $tutorial) {
+            $tutorial->game->categories = $this->standardCategoryArray($tutorial->game->categories);
+        }
+
+        return $this->packResult(['homepage' => [
+            'slider' => $slider,
+            'new_games' => $newGames,
+            'comments' => $comments,
+            'tutorials' => $tutorials
+        ]]);
     }
 
     /**
@@ -95,7 +114,8 @@ class ApiController extends Controller
         ];
     }
 
-    private function standardCategoryArray($categories){
+    private function standardCategoryArray($categories)
+    {
         $newCats = [];
         for ($j = 0; $j < count($categories); $j++) {
             $newCats[] = $categories[$j]->name;
