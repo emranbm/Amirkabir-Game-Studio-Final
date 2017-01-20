@@ -18,6 +18,7 @@ class CreateRecordsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('game_id')->unsigned();
             $table->integer('score')->default(0);
+            $table->integer('level')->default(0);
             $table->integer('displacement')->default(0);
             $table->timestamps();
         });
