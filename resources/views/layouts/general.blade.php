@@ -28,14 +28,22 @@
         <div class="row col-md-6">
             <div class="row col-md-6">
                 <div class="col-md-4">
-                    <a href="{{ Auth::guest() ? url('login') : url('logout') }}">
-                        @if (Auth::guest())
+                    @if (Auth::guest())
+                        <a href="{{ url('login') }}">
                             <span id="login-label" class="text-muted">ورود</span>
-                        @else
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a>
+                    @else
+                        <a href="{{ url('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <span id="login-label" class="text-muted">خروج</span>
-                        @endif
-                        <span class="glyphicon glyphicon-user"></span>
-                    </a>
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                              style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    @endif
                 </div>
                 <div id="search-div" class="row col-md-8">
                     <span id="search-icon" class="glyphicon glyphicon-search col-md-3"></span>
