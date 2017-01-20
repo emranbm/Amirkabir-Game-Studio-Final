@@ -10,7 +10,7 @@ $('#comments-tab').click(commentsTabClick);
 $('#related-games-tab').click(relatedGamesTabClick);
 $('#gallery-tab').click(galleryTabClick);
 
-$.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
+$.get("api/games/" + GAME_TITLE + '/header', function (data, status) {
 
     let response = checkResponse(data, status);
     if (!response)
@@ -53,7 +53,7 @@ function infoTabClick() {
     if (infoTabClick.cache)
         return $('.tab-content').html('<div id="info-div">' + infoTabClick.cache + '</div>');
 
-    $.get("F95/games/" + GAME_TITLE + "/info", function (data, status) {
+    $.get("api/games/" + GAME_TITLE + "/info", function (data, status) {
         let response = checkResponse(data, status);
         if (!response)
             return;
@@ -121,7 +121,7 @@ function leaderTabClick() {
         return;
     }
 
-    $.get("F95/games/" + GAME_TITLE + "/leaderboard", function (data, status) {
+    $.get("api/games/" + GAME_TITLE + "/leaderboard", function (data, status) {
         let response = checkResponse(data, status);
         if (!response)
             return;
@@ -148,7 +148,7 @@ function commentsTabClick() {
         let nextBtn = $('<button class="btn btn-primary center-block">بارگذاری نظرات بعدی</button>');
         let offset = comments.length;
         nextBtn.click(function () {
-            $.get('F95/games/' + GAME_TITLE + '/comments?offset=' + offset, function (data, status) {
+            $.get('api/games/' + GAME_TITLE + '/comments?offset=' + offset, function (data, status) {
                 let response = checkResponse(data, status);
                 if (!response)
                     return;
@@ -164,7 +164,7 @@ function commentsTabClick() {
         return
     }
 
-    $.get("F95/games/" + GAME_TITLE + "/comments", function (data, status) {
+    $.get("api/games/" + GAME_TITLE + "/comments", function (data, status) {
         let response = checkResponse(data, status);
         if (!response)
             return;
@@ -207,7 +207,7 @@ function relatedGamesTabClick() {
         return;
     }
 
-    $.get("F95/games/" + GAME_TITLE + "/related_games", function (data, status) {
+    $.get("api/games/" + GAME_TITLE + "/related_games", function (data, status) {
         let response = checkResponse(data, status);
         if (!response)
             return;
@@ -261,7 +261,7 @@ function galleryTabClick() {
         return
     }
 
-    $.get('F95/games/' + GAME_TITLE + '/gallery', function (data, status) {
+    $.get('api/games/' + GAME_TITLE + '/gallery', function (data, status) {
         let response = checkResponse(data, status);
         if (!response)
             return;

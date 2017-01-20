@@ -1,7 +1,7 @@
 /**
  * Created by emran on 12/24/16.
  */
-$.get("F95/home", function (data, status) {
+$.get("api/home", function (data, status) {
     if (status !== 'success') {
         alert('مشکل در ارتباط با سرور');
         return;

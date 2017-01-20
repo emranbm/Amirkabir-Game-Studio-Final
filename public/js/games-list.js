@@ -1,7 +1,7 @@
 /**
  * Created by emran on 1/1/17.
  */
-$.get('F95/games?q=' + emranHelper.getParameterByName('q'), function (data, status) {
+$.get('api/games?q=' + emranHelper.getParameterByName('q'), function (data, status) {
     let response = checkResponse(data, status);
     if (!response)
         return;
