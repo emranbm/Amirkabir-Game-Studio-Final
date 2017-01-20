@@ -11,25 +11,30 @@ class ApiController extends Controller
 
     public function info($game, Request $request)
     {
+        $game->load('categories');
         return $this->packResult(['game' => $game]);
     }
 
-    public function comments($title, Request $request)
+    public function comments($game, Request $request)
     {
-        return $this->packResult(['comments' => Game::where('title', $title)->all()]);
+        $game->comments->load('user');
+        foreach ($game->comments as $comment){
+            $comment->game->load('categories');
+        }
+        return $this->packResult(['comments' => $game->comments]);
     }
 
-    public function header($title, Request $request)
+    public function header($game, Request $request)
     {
         //TODO
     }
 
-    public function leaderboard($title, Request $request)
+    public function leaderboard($game, Request $request)
     {
         //TODO
     }
 
-    public function related_games($title, Request $request)
+    public function related_games($game, Request $request)
     {
         //TODO
     }

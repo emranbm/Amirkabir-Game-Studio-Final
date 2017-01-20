@@ -83,24 +83,24 @@ function leaderTabClick() {
         }
 
         let rank1 = getLeaderboardRank(leaderboard, 1);
-        $('#person2 img').attr('src', rank1.player.avatar);
-        $('#name').html(rank1.player.name);
+        $('#person2 img').attr('src', rank1.user.avatar);
+        $('#name').html(rank1.user.name);
         $('#score').html(persianizer.reshapeNums(rank1.score));
         setStars($('#stars i'), rank1.displacement % 6);
         $('#person2 div.hexagon-45').html(persianizer.reshapeNums(rank1.level));
         $('#person2 abbr').attr('title', 'میزان پیشرفت: ' + rank1.displacement);
 
         let rank2 = getLeaderboardRank(leaderboard, 2);
-        $('#person1 img').attr('src', rank2.player.avatar);
-        $('#person1 .name').html(rank2.player.name);
+        $('#person1 img').attr('src', rank2.user.avatar);
+        $('#person1 .name').html(rank2.user.name);
         $('#person1 .score').html(persianizer.reshapeNums(rank2.score));
         setStars($('#person1 .stars i'), rank2.displacement % 6);
         $('#person1 div.hexagon-40').html(persianizer.reshapeNums(rank2.level));
         $('#person1 abbr').attr('title', 'میزان پیشرفت: ' + rank2.displacement);
 
         let rank3 = getLeaderboardRank(leaderboard, 3);
-        $('#person3 img').attr('src', rank3.player.avatar);
-        $('#person3 .name').html(rank3.player.name);
+        $('#person3 img').attr('src', rank3.user.avatar);
+        $('#person3 .name').html(rank3.user.name);
         $('#person3 .score').html(persianizer.reshapeNums(rank3.score));
         setStars($('#person3 .stars i'), rank3.displacement % 6);
         $('#person3 div.hexagon-40').html(persianizer.reshapeNums(rank3.level));
@@ -109,8 +109,8 @@ function leaderTabClick() {
         let rankLevel = 4;
         for (let listItem of $('.list-item')) {
             let r = getLeaderboardRank(leaderboard, rankLevel);
-            $(listItem).find('img').attr('src', r.player.avatar);
-            $(listItem).find('.name').html(r.player.name);
+            $(listItem).find('img').attr('src', r.user.avatar);
+            $(listItem).find('.name').html(r.user.name);
             $(listItem).find('.score').html(persianizer.reshapeNums(r.score));
             setStars($(listItem).find('.stars i'), r.displacement % 6);
             $(listItem).find('div.hexagon-40').html(persianizer.reshapeNums(r.level));
@@ -327,9 +327,9 @@ function setStars(starElements, value, activeClass = 'gold_star', passiveClass =
 function addComments(comments) {
     for (let c of comments) {
         let commentElement = $('<div class="row comment-row"> <div class="col-md-3 comment-stars-div"><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text"></span></div><div class="col-md-7" dir="rtl"> <h5>۲۲ آذر ۹۵</h5> <span class="username text-primary">ali</span> <span class="text-primary comment-text">بسیار بازی زیبا و قشنگی بود</span> </div><div class="col-md-2"> <img class="round-img" src="images/thmub.jpg"> </div></div>');
-        if (c.player.avatar)
-            commentElement.find('img').attr('src', c.player.avatar);
-        commentElement.find('.username').html(c.player.name);
+        if (c.user.avatar)
+            commentElement.find('img').attr('src', c.user.avatar);
+        commentElement.find('.username').html(c.user.name);
         commentElement.find('h5').html(c.date);
         commentElement.find('.comment-text').html(c.text);
         setStars(commentElement.find('.comment-stars-div span'), c.rate, 'blue-star', '');

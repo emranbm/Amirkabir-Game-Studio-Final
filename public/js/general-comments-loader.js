@@ -19,7 +19,7 @@ $.get("F95/home", function (data, status) {
 
     // Comments
     for (let comment of homepage.comments) {
-        let item = new CommentItem(comment.text, comment.date, comment.player.avatar);
+        let item = new CommentItem(comment.text, comment.date, comment.user.avatar);
         $("#comments-div").append(item);
     }
 
