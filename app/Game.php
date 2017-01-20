@@ -23,4 +23,9 @@ class Game extends Model
     {
         return $this->belongsToMany('App\Category');
     }
+
+    public function tutorials()
+    {
+        return $this->hasMany('App\Tutorial');
+    }
 }
