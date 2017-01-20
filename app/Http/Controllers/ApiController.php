@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Game;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
 
-    public function info($title, Request $request)
+    public function info($game, Request $request)
     {
-        return $this->packResult(['game' => Game::where('title', $title)->first()]);
+        return $this->packResult(['game' => $game]);
     }
 
     public function comments($title, Request $request)
     {
-        //TODO
+        return $this->packResult(['comments' => Game::where('title', $title)->all()]);
     }
 
     public function header($title, Request $request)

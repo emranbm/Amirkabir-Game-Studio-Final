@@ -1,5 +1,6 @@
 <?php
 
+use App\Game;
 use Illuminate\Http\Request;
 
 /*
@@ -13,14 +14,18 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::bind('game', function ($title) {
+    return Game::whereTitle($title)->first();
+});
+
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
 Route::group(['prefix' => 'games'], function () {
-    Route::get('{title}/info', 'ApiController@info');
-    Route::get('{title}/comments', 'ApiController@comments');
-    Route::get('{title}/header', 'ApiController@header');
-    Route::get('{title}/leaderboard', 'ApiController@leaderboard');
-    Route::get('{title}/related_games', 'ApiController@related_games');
+    Route::get('{game}/info', 'ApiController@info');
+    Route::get('{game}/comments', 'ApiController@comments');
+    Route::get('{game}/header', 'ApiController@header');
+    Route::get('{game}/leaderboard', 'ApiController@leaderboard');
+    Route::get('{game}/related_games', 'ApiController@related_games');
 });
