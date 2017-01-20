@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="css/loading.css">
 </head>
 <body>
+<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+    {{ csrf_field() }}
+</form>
 <div class="container-fluid">
     <div id="first-viewport" class="viewport">
 
@@ -29,7 +32,14 @@
 
         <form method="get" action="{{ url('register') }}">
     <span dir="rtl" id="top-left-span">
-        <a class="nice-link small-text" href="{{ url('login') }}">ورود</a>
+        @if(Auth::guest())
+            <a class="nice-link small-text" href="{{ url('login') }}">ورود</a>
+        @else
+            <a class="nice-link small-text" href="{{ url('logout') }}"
+               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">خروج</a>
+        @endif
+
+
         <button type="submit" class="btn btn-primary">ثبت نام</button>
     </span>
         </form>
