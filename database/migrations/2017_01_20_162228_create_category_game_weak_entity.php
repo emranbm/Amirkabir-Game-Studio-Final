@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGamesTable extends Migration
+class CreateCategoryGameWeakEntity extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateGamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('category_game', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('abstract');
-            $table->text('info');
-            $table->string('large_image');
-            $table->string('small_image');
+            $table->integer('game_id')->unsigned();
+            $table->integer('category_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateGamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('category_game');
     }
 }
