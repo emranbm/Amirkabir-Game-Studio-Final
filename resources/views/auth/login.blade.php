@@ -47,7 +47,7 @@
                                                                                  name="password"
                                                                                  placeholder="رمز عبور"/></div>
             <br/>
-            <input type="checkbox"/><a href="#">قوانین</a> را می‌پذیرم. <br/>
+            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}/>مرا به خاطر بسپار<br/>
             <input class="button" type="submit" value="ورود">
         </form>
         <a href="{{ url('/password/reset') }}" id="fotgot-pass-link">رمزمو یادم رفته</a>
