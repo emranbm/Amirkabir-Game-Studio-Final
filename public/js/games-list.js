@@ -24,7 +24,7 @@ $.get('api/games?q=' + q, function (data, status) {
         gameItem.find('img').attr('src', g.large_image);
         gameItem.find('.item-title').html(g.title);
         gameItem.find('.item-category').html(g.categories.join('، '));
-        gameItem.attr('href', 'games.html?game=' + g.title);
+        gameItem.attr('href', 'games?game=' + g.title);
         setStars(gameItem.find('.glyphicon-star'), g.rate, 'blue-star', '');
 
         row.append(gameItem);
