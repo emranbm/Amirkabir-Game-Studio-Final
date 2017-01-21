@@ -59,3 +59,21 @@ Route::post('/set_avatar', function (\Illuminate\Http\Request $request) {
 
 })->middleware('auth');
 
+Route::get('/set_name', function () {
+
+    return '<form method="post" action="set_name"><input type="text" placeholder="نام جدید خود را وارد کنید" name="new_name"><button type="submit" value="submit">اعمال</button></form>';
+})->middleware('auth');
+
+Route::post('/set_name', function (\Illuminate\Http\Request $request) {
+
+    $newName = \Illuminate\Support\Facades\Input::get('new_name');
+
+    if ($newName) {
+        $user = $request->user();
+        $user->name = $newName;
+        $user->save();
+        return 'نام شما با موفقیت تغییر کرد.';
+    } else
+        return 'نام خود را درست بفرستید.';
+
+})->middleware('auth');
