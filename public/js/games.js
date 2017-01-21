@@ -343,7 +343,7 @@ function addComments(comments) {
             commentElement.find('img').attr('src', c.user.avatar);
         commentElement.find('.username').html(c.user.name);
         commentElement.find('h5').html(c.date);
-        commentElement.find('.comment-text').html(c.text);
+        commentElement.find('.comment-text').html(c.comment);
         setStars(commentElement.find('.comment-stars-div span'), c.rate, 'blue-star', '');
 
         $('.comments-content').append(commentElement);

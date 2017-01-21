@@ -27,10 +27,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::post('/new_comment', function (\Illuminate\Http\Request $request){
+Route::post('{game}/new_comment', function ($game, \Illuminate\Http\Request $request) {
 
     $user = $request->user();
 
-    $user->comments()->save(new \App\Comment(['game_id']));
+    $user->comments()->save(new \App\Comment([
+        'game_id' => $game->id,
+        'comment' => \Illuminate\Support\Facades\Input::get('comment'),
+        'rate' => rand(0, 5),
+        'date' => '۲ بهمن ۱۳۹۵'
+    ]));
 
 })->middleware('auth');
