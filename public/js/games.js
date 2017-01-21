@@ -98,22 +98,34 @@ function leaderTabClick() {
         $('#person1 abbr').attr('title', 'میزان پیشرفت: ' + rank2.displacement);
 
         let rank3 = getLeaderboardRank(leaderboard, 3);
-        $('#person3 img').attr('src', rank3.user.avatar);
-        $('#person3 .name').html(rank3.user.name);
-        $('#person3 .score').html(persianizer.reshapeNums(rank3.score));
-        setStars($('#person3 .stars i'), rank3.displacement % 6);
-        $('#person3 div.hexagon-40').html(persianizer.reshapeNums(rank3.level));
-        $('#person3 abbr').attr('title', 'میزان پیشرفت: ' + rank3.displacement);
+        if (rank3) {
+            $('#person3 img').attr('src', rank3.user.avatar);
+            $('#person3 .name').html(rank3.user.name);
+            $('#person3 .score').html(persianizer.reshapeNums(rank3.score));
+            setStars($('#person3 .stars i'), rank3.displacement % 6);
+            $('#person3 div.hexagon-40').html(persianizer.reshapeNums(rank3.level));
+            $('#person3 abbr').attr('title', 'میزان پیشرفت: ' + rank3.displacement);
+        }else {
+            $('#person3 .score').html(persianizer.reshapeNums(0));
+            setStars($('#person3 .stars i'), 0);
+            $('#person3 div.hexagon-40').html(persianizer.reshapeNums(0));
+        }
 
         let rankLevel = 4;
         for (let listItem of $('.list-item')) {
             let r = getLeaderboardRank(leaderboard, rankLevel);
-            $(listItem).find('img').attr('src', r.user.avatar);
-            $(listItem).find('.name').html(r.user.name);
-            $(listItem).find('.score').html(persianizer.reshapeNums(r.score));
-            setStars($(listItem).find('.stars i'), r.displacement % 6);
-            $(listItem).find('div.hexagon-40').html(persianizer.reshapeNums(r.level));
-            $(listItem).find('abbr').attr('title', 'میزان پیشرفت: ' + r.displacement);
+            if (r) {
+                $(listItem).find('img').attr('src', r.user.avatar);
+                $(listItem).find('.name').html(r.user.name);
+                $(listItem).find('.score').html(persianizer.reshapeNums(r.score));
+                setStars($(listItem).find('.stars i'), r.displacement % 6);
+                $(listItem).find('div.hexagon-40').html(persianizer.reshapeNums(r.level));
+                $(listItem).find('abbr').attr('title', 'میزان پیشرفت: ' + r.displacement);
+            }else {
+                $(listItem).find('.score').html(persianizer.reshapeNums(0));
+                setStars($(listItem).find('.stars i'), 0);
+                $(listItem).find('div.hexagon-40').html(persianizer.reshapeNums(0));
+            }
 
             rankLevel++;
         }
@@ -301,7 +313,11 @@ function getLeaderboardRank(leaderboard, rank = 1) {
      return item;
      }*/
 
-    return leaderboard[rank - 1];
+    try {
+        return leaderboard[rank - 1];
+    } catch (e) {
+        return null;
+    }
 
     // return null;
 }
