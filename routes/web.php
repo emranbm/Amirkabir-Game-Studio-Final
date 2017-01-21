@@ -26,3 +26,11 @@ Route::get('games_list', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::post('/new_comment', function (\Illuminate\Http\Request $request){
+
+    $user = $request->user();
+
+    $user->comments()->save(new \App\Comment(['game_id']));
+
+})->middleware('auth');

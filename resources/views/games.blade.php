@@ -60,7 +60,7 @@
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
-                    <form method="post" action="{{ url('new_comment') }}">
+                    <form method="post" action="{{ url(\Illuminate\Support\Facades\Input::get('game') . '/new_comment') }}">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -70,6 +70,7 @@
                                 <p>نظر خود را وارد کنید.</p>
                                 <textarea name="comment" cols="60" rows="4"></textarea>
                             </div>
+                            {{ csrf_field() }}
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
                                 <button type="submit" class="btn btn-primary">ثبت</button>
