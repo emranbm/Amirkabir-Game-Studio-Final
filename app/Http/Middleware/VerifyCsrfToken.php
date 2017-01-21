@@ -13,6 +13,7 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         //
-        'new_comment'
+        'new_comment',
+        'set_avatar'
     ];
 }

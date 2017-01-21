@@ -39,3 +39,23 @@ Route::post('{game}/new_comment', function ($game, \Illuminate\Http\Request $req
     ]));
 
 })->middleware('auth');
+
+Route::get('/set_avatar', function () {
+
+    return '<form method="post" action="set_avatar"><input type="text" placeholder="آدرس آواتار خود را وارد کنید." name="avatar"><button type="submit" value="submit">اعمال</button></form>';
+})->middleware('auth');
+
+Route::post('/set_avatar', function (\Illuminate\Http\Request $request) {
+
+    $avatar = \Illuminate\Support\Facades\Input::get('avatar');
+
+    if ($avatar) {
+        $user = $request->user();
+        $user->avatar = $avatar;
+        $user->save();
+        return 'آواتار شما با موفقیت تغییر کرد.';
+    } else
+        return 'آواتار خود را درست بفرستید.';
+
+})->middleware('auth');
+
