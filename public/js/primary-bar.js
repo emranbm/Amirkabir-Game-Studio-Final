@@ -13,5 +13,5 @@ $('#search-input').keyup(function(e){
 function search() {
     let query = $('#search-input').val();
 
-    window.location.href = "games_list.html?q=" + query;
+    window.location.href = "games_list?q=" + query;
 }
