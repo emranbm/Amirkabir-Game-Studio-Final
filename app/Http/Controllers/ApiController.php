@@ -75,7 +75,7 @@ class ApiController extends Controller
             }
 
             return $query;
-        }])->get();
+        }])->where('id', '<>', $game->id)->get();
 
         foreach ($relatedGames as $relatedGame) {
             $cNums[] = $this->commentsCount($relatedGame);
