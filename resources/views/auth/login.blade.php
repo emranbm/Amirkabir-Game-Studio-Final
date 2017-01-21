@@ -47,6 +47,13 @@
                                                                                  name="password"
                                                                                  placeholder="رمز عبور"/></div>
             <br/>
+            {!! captcha_img() !!}
+            <br/>
+
+            <div class="center-box-row"><input class="text-box" type="text" name="captcha" placeholder="کپچا!"/>
+            </div>
+            <br/>
+
             <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}/>مرا به خاطر بسپار<br/>
             <input class="button" type="submit" value="ورود">
         </form>
