@@ -60,20 +60,22 @@
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">ثبت نظر جدید</h4>
+                    <form method="post" action="{{ url('new_comment') }}">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">ثبت نظر جدید</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>نظر خود را وارد کنید.</p>
+                                <textarea name="comment" cols="60" rows="4"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+                                <button type="submit" class="btn btn-primary">ثبت</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <p>نظر خود را وارد کنید.</p>
-                            <textarea cols="60" rows="4"></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">ثبت</button>
-                        </div>
-                    </div>
+                    </form>
 
                 </div>
             </div>
