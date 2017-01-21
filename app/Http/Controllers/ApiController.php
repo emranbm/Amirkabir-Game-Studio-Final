@@ -7,6 +7,7 @@ use App\Game;
 use App\Record;
 use App\Tutorial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class ApiController extends Controller
@@ -54,6 +55,19 @@ class ApiController extends Controller
     public function leaderboard($game, Request $request)
     {
         $records = Record::where('game_id', $game->id)->orderBy('score', 'desc')->limit(10)->with('user')->with('game')->get();
+
+        $user = $request->user();
+        $checked = false;
+        if ($user != null) {
+            foreach ($records as $record) {
+                if ($record->user_id == $user->id)
+                    $checked = true;
+            }
+
+            if (!$checked) {
+                $records = array_merge(array_slice(json_decode(json_encode($records)), 0, 9), Record::where('user_id', $user->id));
+            }
+        }
 
         return $this->packResult(['leaderboard' => $records]);
     }
