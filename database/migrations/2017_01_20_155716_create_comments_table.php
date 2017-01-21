@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
             $table->integer('game_id')->unsigned();
             $table->string('comment');
             $table->integer('rate');
+            $table->string('date');
             $table->timestamps();
         });
 

@@ -8,7 +8,7 @@ $.get("api/home", function (data, status) {
         return;
     }
 
-    let response = JSON.parse(data).response;
+    let response = data.response;
 
     if (!response.ok) {
         alert('مشکل در بارگذازی صفحه');
@@ -19,7 +19,7 @@ $.get("api/home", function (data, status) {
 
     // Comments
     for (let comment of homepage.comments) {
-        let item = new CommentItem(comment.text, comment.date, comment.user.avatar);
+        let item = new CommentItem(comment.comment, comment.date, comment.user.avatar);
         $("#comments-div").append(item);
     }
 

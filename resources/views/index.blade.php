@@ -128,9 +128,9 @@
 <script src="libs/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="libs/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="libs/node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
-<script src="scripts/utils/emranHelper.js"></script>
-<script src="scripts/utils/starRating.js"></script>
-<script src="scripts/general-comments-loader.js"></script>
-<script src="scripts/index.js"></script>
+<script src="js/utils/emranHelper.js"></script>
+<script src="js/utils/starRating.js"></script>
+<script src="js/general-comments-loader.js"></script>
+<script src="js/index.js"></script>
 
 </html>

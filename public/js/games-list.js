@@ -40,7 +40,7 @@ function checkResponse(data, status) {
         return null;
     }
 
-    let response = JSON.parse(data).response;
+    let response = data.response;
 
     if (!response.ok) {
         alert('مشکل در بارگذازی صفحه');

@@ -52,22 +52,21 @@ function infoTabClick() {
 
     if (infoTabClick.cache)
         return $('.tab-content').html('<div id="info-div">' + infoTabClick.cache + '</div>');
+    else
+        $.get("api/games/" + GAME_TITLE + "/info", function (data, status) {
+            let response = checkResponse(data, status);
+            if (!response)
+                return;
 
-    $.get("api/games/" + GAME_TITLE + "/info", function (data, status) {
-        let response = checkResponse(data, status);
-        if (!response)
-            return;
-
-        infoTabClick.cache = response.result.game.info;
-        infoTabClick();
-    });
+            infoTabClick.cache = response.result.game.info;
+            infoTabClick();
+        });
 }
 
 function leaderTabClick() {
     resetActiveTabs();
     $('#leader-tab').addClass('active-tab');
     $('#tab-title').html($('#leader-tab a').html());
-
 
     if (leaderTabClick.cache) {
         let leaderboard = leaderTabClick.cache;
@@ -79,7 +78,7 @@ function leaderTabClick() {
 
         // Add leaderboard html.
         {
-            $('.tab-content').html('<div id="board"> <div id="title"> برترین ها </div><div id="best"> <div id="person1"> <div class="rate"> ۲ </div><div> <img src="images/thmub.jpg" class="silver-border"> <div class="hexagon-40 level-16md"> ۳۱ </div></div><div class="name text-center"> سروش صحت </div><div class="score text-center"> ۱۵۰۰۰۰۰۰۰ </div><abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> </div></abbr> </div><div id="person2"> <div id="rate"> ۱ </div><div> <img src="images/thmub.jpg" class="gold_border"> <div class="hexagon-45 level-18md"> ۳۲ </div></div><div id="name" class="text-center"> کریم عبدالجبار </div><div id="score" class="text-center"> ۱۵۰۰۰۰۰۰۰ </div><abbr dir="rtl" title=""><div id="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div id="person3"> <div class="rate"> ۳ </div><div> <img src="images/thmub.jpg" class="bronze-border"> <div class="hexagon-40 level-16md"> ۲۹ </div></div><div class="name text-center"> الب ارسلان </div><div class="score text-center"> ۱۵۰۰۰۰۰۰۰ </div><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></div></div><div id="list"> <div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div class="rank-list"> ۴ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۲۵ </div></div><div class="information"> <div class="name"> کاظم اسماعیلی </div><div class="score"> ۱۵۰۰۰۰۰۰۰ </div></div></div><div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div class="rank-list"> ۵ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۲۲ </div></div><div class="information"> <div class="name"> سیامک انتظامی </div><div class="score"> ۱۴۵۰۰۰۰۰۰ </div></div></div><div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div class="rank-list"> ۶ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۲۱ </div></div><div class="information"> <div class="name"> بهمن احسان پور </div><div class="score"> ۱۳۲۰۰۰۰۰۰ </div></div></div><div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div class="rank-list"> ۷ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۱۵ </div></div><div class="information"> <div class="name"> سعید کمالوند </div><div class="score"> ۱۲۴۰۰۰۰۰۰ </div></div></div><div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div class="rank-list"> ۸ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۱۴ </div></div><div class="information"> <div class="name"> جاستین بیرانوند </div><div class="score"> ۱۲۳۰۰۰۰۰۰ </div></div></div><div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div class="rank-list"> ۹ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۸ </div></div><div class="information"> <div class="name"> پویا انوری راد </div><div class="score"> ۱۱۹۰۰۰۰۰۰ </div></div></div><div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> </div></abbr> </div><div class="rank-list"> ۱۰ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۸ </div></div><div class="information"> <div class="name"> بهزاد میامی </div><div class="score"> ۱۱۵۰۰۰۰۰۰ </div></div></div></div></div>');
+            $('.tab-content').html('<div id="board"> <div id="title"> برترین ها </div><div id="best"> <div id="person1"> <div class="rate"> ۲ </div><div> <img src="assets/images/thumb.jpg" class="silver-border"> <div class="hexagon-40 level-16md"> ۳۱ </div></div><div class="name text-center"> سروش صحت </div><div class="score text-center"> ۱۵۰۰۰۰۰۰۰ </div><abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> </div></abbr> </div><div id="person2"> <div id="rate"> ۱ </div><div> <img src="assets/images/thumb.jpg" class="gold_border"> <div class="hexagon-45 level-18md"> ۳۲ </div></div><div id="name" class="text-center"> کریم عبدالجبار </div><div id="score" class="text-center"> ۱۵۰۰۰۰۰۰۰ </div><abbr dir="rtl" title=""><div id="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div id="person3"> <div class="rate"> ۳ </div><div> <img src="assets/images/thumb.jpg" class="bronze-border"> <div class="hexagon-40 level-16md"> ۰ </div></div><div class="name text-center"> هیچکس </div><div class="score text-center"> ۰ </div><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></div></div><div id="list"> <div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div class="rank-list"> ۴ </div><div class="personal-image"> <img src="assets/images/thumb.jpg" class="list-image"> <div class="hexagon level-14md"> ۰ </div></div><div class="information"> <div class="name"> هیچکس </div><div class="score"> ۰ </div></div></div><div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div class="rank-list"> ۵ </div><div class="personal-image"> <img src="assets/images/thumb.jpg" class="list-image"> <div class="hexagon level-14md"> ۲۲ </div></div><div class="information"> <div class="name"> هیچکس </div><div class="score"> ۰ </div></div></div><div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div class="rank-list"> ۶ </div><div class="personal-image"> <img src="assets/images/thumb.jpg" class="list-image"> <div class="hexagon level-14md"> ۰ </div></div><div class="information"> <div class="name"> هیچکس </div><div class="score"> ۰ </div></div></div><div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div class="rank-list"> ۷ </div><div class="personal-image"> <img src="assets/images/thumb.jpg" class="list-image"> <div class="hexagon level-14md"> ۰ </div></div><div class="information"> <div class="name"> هیچکس </div><div class="score"> ۰ </div></div></div><div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div class="rank-list"> ۸ </div><div class="personal-image"> <img src="assets/images/thumb.jpg" class="list-image"> <div class="hexagon level-14md"> ۰ </div></div><div class="information"> <div class="name"> هیچکس </div><div class="score"> ۰ </div></div></div><div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></abbr> </div><div class="rank-list"> ۹ </div><div class="personal-image"> <img src="assets/images/thumb.jpg" class="list-image"> <div class="hexagon level-14md"> ۰ </div></div><div class="information"> <div class="name"> هیچکس </div><div class="score"> ۰ </div></div></div><div class="list-item"> <div class="stars-block"> <abbr dir="rtl" title=""><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> </div></abbr> </div><div class="rank-list"> ۱۰ </div><div class="personal-image"> <img src="assets/images/thumb.jpg" class="list-image"> <div class="hexagon level-14md"> ۰ </div></div><div class="information"> <div class="name"> هیچکس </div><div class="score"> ۰ </div></div></div></div></div>');
         }
 
         let rank1 = getLeaderboardRank(leaderboard, 1);
@@ -120,15 +119,15 @@ function leaderTabClick() {
         }
         return;
     }
+    else
+        $.get("api/games/" + GAME_TITLE + "/leaderboard", function (data, status) {
+            let response = checkResponse(data, status);
+            if (!response)
+                return;
 
-    $.get("api/games/" + GAME_TITLE + "/leaderboard", function (data, status) {
-        let response = checkResponse(data, status);
-        if (!response)
-            return;
-
-        leaderTabClick.cache = response.result.leaderboard;
-        leaderTabClick();
-    });
+            leaderTabClick.cache = response.result.leaderboard;
+            leaderTabClick();
+        });
 }
 
 function commentsTabClick() {
@@ -162,16 +161,15 @@ function commentsTabClick() {
 
 
         return
-    }
+    } else
+        $.get("api/games/" + GAME_TITLE + "/comments", function (data, status) {
+            let response = checkResponse(data, status);
+            if (!response)
+                return;
 
-    $.get("api/games/" + GAME_TITLE + "/comments", function (data, status) {
-        let response = checkResponse(data, status);
-        if (!response)
-            return;
-
-        commentsTabClick.cache = response.result.comments;
-        commentsTabClick();
-    })
+            commentsTabClick.cache = response.result.comments;
+            commentsTabClick();
+        })
 
 }
 
@@ -205,18 +203,17 @@ function relatedGamesTabClick() {
         }
 
         return;
-    }
+    } else
+        $.get("api/games/" + GAME_TITLE + "/related_games", function (data, status) {
+            let response = checkResponse(data, status);
+            if (!response)
+                return;
 
-    $.get("api/games/" + GAME_TITLE + "/related_games", function (data, status) {
-        let response = checkResponse(data, status);
-        if (!response)
-            return;
 
-
-        relatedGamesTabClick.cache = response.result.games;
-        $('.tab-content').html('');
-        relatedGamesTabClick();
-    });
+            relatedGamesTabClick.cache = response.result.games;
+            $('.tab-content').html('');
+            relatedGamesTabClick();
+        });
 }
 
 function galleryTabClick() {
@@ -259,16 +256,15 @@ function galleryTabClick() {
             }
         });
         return
-    }
+    } else
+        $.get('api/games/' + GAME_TITLE + '/gallery', function (data, status) {
+            let response = checkResponse(data, status);
+            if (!response)
+                return;
 
-    $.get('api/games/' + GAME_TITLE + '/gallery', function (data, status) {
-        let response = checkResponse(data, status);
-        if (!response)
-            return;
-
-        galleryTabClick.cache = response.result.gallery.images;
-        galleryTabClick();
-    })
+            galleryTabClick.cache = response.result.gallery.images;
+            galleryTabClick();
+        })
 
 }
 
@@ -284,7 +280,7 @@ function checkResponse(data, status) {
         return null;
     }
 
-    let response = JSON.parse(data).response;
+    let response = data.response;
 
     if (!response.ok) {
         alert('مشکل در بارگذازی صفحه');
@@ -326,7 +322,7 @@ function setStars(starElements, value, activeClass = 'gold_star', passiveClass =
 
 function addComments(comments) {
     for (let c of comments) {
-        let commentElement = $('<div class="row comment-row"> <div class="col-md-3 comment-stars-div"><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text"></span></div><div class="col-md-7" dir="rtl"> <h5>۲۲ آذر ۹۵</h5> <span class="username text-primary">ali</span> <span class="text-primary comment-text">بسیار بازی زیبا و قشنگی بود</span> </div><div class="col-md-2"> <img class="round-img" src="images/thmub.jpg"> </div></div>');
+        let commentElement = $('<div class="row comment-row"> <div class="col-md-3 comment-stars-div"><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text"></span></div><div class="col-md-7" dir="rtl"> <h5>۲۲ آذر ۹۵</h5> <span class="username text-primary">ali</span> <span class="text-primary comment-text">بسیار بازی زیبا و قشنگی بود</span> </div><div class="col-md-2"> <img class="round-img" src="assets/images/thumb.jpg"> </div></div>');
         if (c.user.avatar)
             commentElement.find('img').attr('src', c.user.avatar);
         commentElement.find('.username').html(c.user.name);

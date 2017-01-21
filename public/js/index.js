@@ -7,7 +7,7 @@ $.get("api/home", function (data, status) {
         return;
     }
 
-    let response = JSON.parse(data).response;
+    let response = data.response;
 
     if (!response.ok) {
         alert('مشکل در بارگذازی صفحه');
@@ -35,8 +35,8 @@ $.get("api/home", function (data, status) {
         $('#first-viewport').css('background-size', 'cover');
         $('#details-title').html(title);
         $('#details-content').html($(this).find('.hidden').html());
-        $('#game-pge-btn').attr('data-link', 'games.html?game=' + title);
-        $('#trailer-div').attr('href', 'games.html?game=' + title + '&tab=gallery');
+        $('#game-pge-btn').attr('data-link', 'games?game=' + title);
+        $('#trailer-div').attr('href', 'games?game=' + title + '&tab=gallery');
     });
 
     $('#game-pge-btn').click(function () {
@@ -104,7 +104,7 @@ function MainCarouselItem(slide) {
  */
 function NewGameCarouselItem(title, category, stars, imageUrl, totalStars = 5) {
     let a = emranHelper.newElement('a');
-    a.setAttribute('href', 'games.html?game=' + title);
+    a.setAttribute('href', 'games?game=' + title);
 
     let divItem = emranHelper.newDiv('game-item');
     divItem.setAttribute('dir', 'ltr');
