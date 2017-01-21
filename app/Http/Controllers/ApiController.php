@@ -7,6 +7,7 @@ use App\Game;
 use App\Record;
 use App\Tutorial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ApiController extends Controller
 {
@@ -127,6 +128,13 @@ class ApiController extends Controller
             'comments' => $comments,
             'tutorials' => $tutorials
         ]]);
+    }
+
+    public function search()
+    {
+        $q = Input::get('q');
+
+        return $this->packResult(['games' => Game::where('title', 'like', '%' . $q . '%')->get()]);
     }
 
     /**
