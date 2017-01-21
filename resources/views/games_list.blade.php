@@ -13,7 +13,7 @@
     <header dir="rtl" class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <h1>نتایج جستجو برای:‌ FIFA</h1>
+            <h1 id="head-title">نتایج جستجو برای:‌ FIFA</h1>
         </div>
         <div class="col-md-3"></div>
     </header>

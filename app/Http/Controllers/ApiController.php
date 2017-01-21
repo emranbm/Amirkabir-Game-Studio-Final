@@ -134,7 +134,13 @@ class ApiController extends Controller
     {
         $q = Input::get('q');
 
-        return $this->packResult(['games' => Game::where('title', 'like', '%' . $q . '%')->get()]);
+        $games = json_decode(json_encode(Game::where('title', 'like', '%' . $q . '%')->with('categories')->get()));
+
+        foreach ($games as $game) {
+            $game->categories = $this->standardCategoryArray($game->categories);
+        }
+
+        return $this->packResult(['games' => $games]);
     }
 
     /**

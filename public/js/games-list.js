@@ -1,7 +1,11 @@
 /**
  * Created by emran on 1/1/17.
  */
-$.get('api/games?q=' + emranHelper.getParameterByName('q'), function (data, status) {
+let q = emranHelper.getParameterByName('q');
+
+$('#head-title').html('نتایج جستجو برای: ' + q);
+
+$.get('api/games?q=' + q, function (data, status) {
     let response = checkResponse(data, status);
     if (!response)
         return;
