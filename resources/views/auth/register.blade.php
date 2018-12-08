@@ -9,7 +9,7 @@
     <meta name="author" content="1111111">
 
     <link rel="stylesheet" href="css/reset.css">
-    <link href="https://cdn.rawgit.com/rastikerdar/shabnam-font/v1.0.2/dist/font-face.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v1.0.2/dist/font-face.css" rel="stylesheet"
           type="text/css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/auth/global.css">
