@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Amirkabir Game Studio</title>
     <link rel="stylesheet" href="css/reset.css">
-    <link href="https://cdn.rawgit.com/rastikerdar/shabnam-font/v1.0.2/dist/font-face.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v1.0.2/dist/font-face.css" rel="stylesheet"
           type="text/css"/>
     <link rel="stylesheet" href="libs/node_modules/owl.carousel/dist/assets/owl.carousel.min.css"/>
     <link rel="stylesheet" href="libs/node_modules/bootstrap/dist/css/bootstrap.min.css">
